@@ -24,4 +24,4 @@ user_pref("browser.tabs.insertAfterCurrent", true);
 
 // Zen interface customization
 user_pref("zen.view.experimental-no-window-controls", true);
-user_pref("zen.view.use-single-toolbar", true);
+//user_pref("zen.view.use-single-toolbar", true);
