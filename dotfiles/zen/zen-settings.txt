@@ -1,0 +1,10 @@
+toolkit.legacyUserProfileCustomizations.stylesheets	true
+dom.disable_beforeunload	true
+browser.tabs.min_inactive_duration_before_unload	300000
+zen.view.compact.hide-toolbar	true	
+zen.view.compact.show-background-tab-toast	false
+zen.view.compact.enable-at-startup	true
+zen.theme.content-element-separation	0
+browser.tabs.searchclipboardfor.middleclick	false
+browser.tabs.insertAfterCurrent	true
+
