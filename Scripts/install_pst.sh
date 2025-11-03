@@ -83,3 +83,131 @@ if ! pkg_installed flatpak; then
 else
     print_log -y "[FLATPAK]" -b " :: " "flatpak is already installed"
 fi
+
+
+# ddcutil - configure i2c for monitor brightness control
+if pkg_installed ddcutil; then
+    print_log -c "[DDCUTIL] " -b "detected :: " "ddcutil"
+    
+    # Load i2c-dev kernel module
+    if ! lsmod | grep -q i2c_dev; then
+        print_log -g "[DDCUTIL] " -b " :: " "loading i2c-dev kernel module..."
+        if [ ${flg_DryRun} -eq 1 ]; then
+            print_log -g "[DDCUTIL] " -b " :: " "would load i2c-dev module..."
+        else
+            sudo modprobe i2c-dev
+        fi
+    fi
+    
+    # Make i2c-dev load on boot
+    if [ ! -f /etc/modules-load.d/i2c-dev.conf ]; then
+        print_log -g "[DDCUTIL] " -b " :: " "configuring i2c-dev to load on boot..."
+        if [ ${flg_DryRun} -eq 1 ]; then
+            print_log -g "[DDCUTIL] " -b " :: " "would create /etc/modules-load.d/i2c-dev.conf..."
+        else
+            echo "i2c-dev" | sudo tee /etc/modules-load.d/i2c-dev.conf > /dev/null
+        fi
+    else
+        print_log -y "[DDCUTIL] " -b " :: " "i2c-dev already configured"
+    fi
+    
+    # Add user to i2c group
+    if ! groups ${USER} | grep -q i2c; then
+        print_log -g "[DDCUTIL] " -b " :: " "adding ${USER} to i2c group..."
+        if [ ${flg_DryRun} -eq 1 ]; then
+            print_log -g "[DDCUTIL] " -b " :: " "would add user to i2c group..."
+        else
+            sudo usermod -aG i2c ${USER}
+            print_log -y "[DDCUTIL] " -b " :: " "You need to log out and back in for group changes to take effect"
+        fi
+    else
+        print_log -y "[DDCUTIL] " -b " :: " "${USER} already in i2c group"
+    fi
+    
+        print_log -g "[DDCUTIL] " -b " :: " "ddcutil configured. Test with: ddcutil detect"
+    else
+        print_log -y "[DDCUTIL] " -b " :: " "ddcutil is not installed..."
+    fi
+
+    
+# mpv - install uosc, playlistmanager, and thumbfast scripts
+if pkg_installed mpv; then
+    print_log -c "[MPV] " -b "detected :: " "mpv"
+    
+    mpv_scripts_dir="${HOME}/.config/mpv/scripts"
+    mpv_playlists_dir="${HOME}/.config/mpv/playlists"
+    
+    if [ ${flg_DryRun} -eq 1 ]; then
+        print_log -g "[MPV] " -b " :: " "would install mpv scripts..."
+    else
+        # Create scripts and playlists directories if they don't exist
+        mkdir -p "${mpv_scripts_dir}"
+        mkdir -p "${mpv_playlists_dir}"
+        print_log -g "[MPV] " -b " :: " "playlists directory created"
+        
+        print_log -g "[MPV] " -b " :: " "installing uosc..."
+        if [ ! -f "${mpv_scripts_dir}/uosc.lua" ]; then
+            curl -sL "https://github.com/tomasklaen/uosc/releases/latest/download/uosc.zip" -o /tmp/uosc.zip
+            unzip -q /tmp/uosc.zip -d "${mpv_scripts_dir}"
+            rm /tmp/uosc.zip
+            print_log -g "[MPV] " -b " :: " "uosc installed"
+        else
+            print_log -y "[MPV] " -b " :: " "uosc already installed"
+        fi
+        
+        print_log -g "[MPV] " -b " :: " "installing playlistmanager..."
+        if [ ! -f "${mpv_scripts_dir}/playlistmanager.lua" ]; then
+            curl -sL "https://raw.githubusercontent.com/jonniek/mpv-playlistmanager/master/playlistmanager.lua" \
+                -o "${mpv_scripts_dir}/playlistmanager.lua"
+            print_log -g "[MPV] " -b " :: " "playlistmanager installed"
+        else
+            print_log -y "[MPV] " -b " :: " "playlistmanager already installed"
+        fi
+        
+        print_log -g "[MPV] " -b " :: " "installing thumbfast..."
+        if [ ! -f "${mpv_scripts_dir}/thumbfast.lua" ]; then
+            curl -sL "https://raw.githubusercontent.com/po5/thumbfast/master/thumbfast.lua" \
+                -o "${mpv_scripts_dir}/thumbfast.lua"
+            print_log -g "[MPV] " -b " :: " "thumbfast installed"
+        else
+            print_log -y "[MPV] " -b " :: " "thumbfast already installed"
+        fi
+        
+        print_log -g "[MPV] " -b " :: " "mpv scripts installation complete"
+    fi
+else
+    print_log -y "[MPV] " -b " :: " "mpv is not installed..."
+fi
+
+# neovim - install LazyVim and apply custom configs
+if pkg_installed neovim; then
+    print_log -c "[NEOVIM] " -b "detected :: " "neovim"
+    
+    nvim_config_dir="${HOME}/.config/nvim"
+    # shellcheck disable=SC2154
+    nvim_custom_dir="${cloneDir}/Configs/.config/nvim"
+    
+    if [ ${flg_DryRun} -eq 1 ]; then
+        print_log -g "[NEOVIM] " -b " :: " "would install LazyVim..."
+    else
+        if [ ! -d "${nvim_config_dir}" ]; then
+            print_log -g "[NEOVIM] " -b " :: " "installing LazyVim starter..."
+            git clone https://github.com/LazyVim/starter "${nvim_config_dir}"
+            rm -rf "${nvim_config_dir}/.git"
+            print_log -g "[NEOVIM] " -b " :: " "LazyVim installed"
+        else
+            print_log -y "[NEOVIM] " -b " :: " "LazyVim already exists"
+        fi
+        
+        # Overlay custom configs if they exist
+        if [ -d "${nvim_custom_dir}" ]; then
+            print_log -g "[NEOVIM] " -b " :: " "applying custom configs..."
+            cp -r "${nvim_custom_dir}"/* "${nvim_config_dir}/"
+            print_log -g "[NEOVIM] " -b " :: " "custom configs applied"
+        fi
+        
+        print_log -y "[NEOVIM] " -b " :: " "Run 'nvim' to complete setup"
+    fi
+    else
+        print_log -y "[NEOVIM] " -b " :: " "neovim is not installed..."
+fi
