@@ -1,0 +1,100 @@
+/* User custom styles */
+@define-color bar-bg rgba(0, 0, 0, 0);
+@define-color main-bg #181926;
+
+* {
+	font-size: 11.5px;
+	font-weight: 900;
+	/* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); */
+}
+
+#clock,
+#pulseaudio {
+	font-size: 15.5px;
+}
+
+/* #tray, */
+#custom-rofi,
+#custom-power,
+#custom-hyde-menu {
+	font-size: 14.5px;
+}
+
+/* #wlr-taskbar { */
+/*   font-size: 15px; */
+/* } */
+
+#custom-hyprsunset,
+#custom-brightness {
+	font-size: 18px;
+}
+
+window#waybar.top .modules-left,
+window#waybar.top .modules-center,
+window#waybar.top .modules-right,
+window#waybar.bottom .modules-left,
+window#waybar.bottom .modules-center,
+window#waybar.bottom .modules-right {
+	padding-left: 0em;
+	padding-right: 0em;
+	margin: 0;
+}
+
+window#waybar.top #pill,
+window#waybar.bottom #pill {
+	margin: 0em 0.2em 0em 0.2em;
+}
+
+/* window#waybar.left #pill, */
+/* window#waybar.right #pill { */
+/*   margin: -1em -2em -1em -1em; */
+/* } */
+
+#workspaces button {
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+}
+
+#workspaces button.empty {
+	opacity: 0.5;
+}
+
+#workspaces button.active {
+	padding-left: 4em;
+	padding-right: 4em;
+	opacity: 1;
+}
+
+#taskbar button {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+#taskbar button.active {
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+/* Remove padding inside pills */
+window#waybar.top #pill,
+window#waybar.bottom #pill {
+	padding: 0em 0.1em 0em 0.1em;
+	margin: 0em 0.3em 0em 0.3em;
+	/* keep the margin between pills */
+}
+
+/* Remove padding from modules inside pills */
+window#waybar.top #pill .module,
+window#waybar.bottom #pill .module {
+	padding: 0em 0.1em 0em 0.1em;
+	margin: 0em 0.5em 0em 0.5em;
+}
+
+/* Tighten up label spacing inside pills */
+window#waybar.top #pill label.module,
+window#waybar.bottom #pill label.module {
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+	margin-left: 0.3em;
+	margin-right: 0.3em;
+}

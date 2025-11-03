@@ -1,0 +1,18 @@
+// Output/Monitor configuration
+// Find available outputs with: niri msg outputs
+
+// DP-3: MSI G271 - Primary monitor at 143.855 Hz
+output "DP-3" {
+    mode "1920x1080@143.855"
+    position x=0 y=0
+    scale 1
+    transform "normal"
+}
+
+// HDMI-A-1: AOC 2752H - Secondary monitor, disabled by default
+// Use Mod+Shift+M to toggle on/off
+output "HDMI-A-1" {
+    off
+    // When enabled, it will be positioned to the right of DP-3
+    // The toggle script handles: mode "1920x1080@60.000" and position x=1920 y=0
+}

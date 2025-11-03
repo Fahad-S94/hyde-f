@@ -1,0 +1,26 @@
+window-rule {
+    // geometry-corner-radius 6
+    // geometry-corner-radius 15
+    // geometry-corner-radius 32
+
+    // clip-to-geometry true
+    // tiled-state true
+    // draw-border-with-background false
+}
+
+// prefer-no-csd
+
+layout {
+    focus-ring {
+        // off
+        width 2
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        off
+    }
+}

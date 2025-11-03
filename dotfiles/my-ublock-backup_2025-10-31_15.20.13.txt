@@ -1,0 +1,43 @@
+{
+  "timeStamp": 1761938413477,
+  "version": "1.67.0",
+  "userSettings": {
+    "contextMenuEnabled": false,
+    "firewallPaneMinimized": false,
+    "importedLists": [],
+    "popupPanelSections": 63,
+    "suspendUntilListsAreLoaded": false
+  },
+  "selectedFilterLists": [
+    "user-filters",
+    "ublock-filters",
+    "ublock-badware",
+    "ublock-privacy",
+    "ublock-quick-fixes",
+    "ublock-unbreak",
+    "easylist",
+    "adguard-mobile",
+    "easyprivacy",
+    "adguard-spyware-url",
+    "urlhaus-1",
+    "plowe-0",
+    "fanboy-cookiemonster",
+    "ublock-cookies-easylist",
+    "fanboy-social",
+    "easylist-chat",
+    "easylist-newsletters",
+    "easylist-notifications",
+    "easylist-annoyances",
+    "ublock-annoyances"
+  ],
+  "hiddenSettings": {},
+  "whitelist": [
+    "chrome-extension-scheme",
+    "moz-extension-scheme",
+    "www.senorspore.com"
+  ],
+  "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop",
+  "urlFilteringString": "",
+  "hostnameSwitchesString": "no-large-media: behind-the-scene false\nno-csp-reports: * true",
+  "userFilters": "! Homepage - distractions (non-videos) | temporary fix: remove gaps + ghost renderer\nyoutube.com###contents.ytd-rich-grid-renderer > :not(ytd-rich-item-renderer, ytd-continuation-item-renderer)\nyoutube.com##ytd-rich-item-renderer[is-in-first-column]:style(margin-left: calc(var(--ytd-rich-grid-item-margin)/2) !important)\n!youtube.com##ytd-ghost-grid-renderer\nwww.youtube.com##ytd-app:style(overflow: hidden !important;)\n!youtube.com##ytd-rich-grid-renderer, html:style(--ytd-rich-grid-items-per-row: 4 !important;)\n! Jun 9, 2025 https://comick.io\ncomick.io##.py-16\ncomick.io##.pt-2.pb-10\ncomick.io##.text-xs.dark\\:border-gray-700.rounded\n! Jul 2, 2025 https://x.com\nx.com##.r-1ny4l3l.r-6416eg.r-o7ynqc.r-1loqt21.r-3pj75a.r-cnw61z.r-1777fci.r-1uusn97.r-sdzlij.r-l5o3uw.css-175oi2r\n! Jul 5, 2025 https://www.youtube.com\nwww.youtube.com###chat\n! Jul 6, 2025 https://www.youtube.com\nwww.youtube.com###panels-full-bleed-container\n\n! Aug 10, 2025 https://comick.io\ncomick.io##.md\\:mx-0.mx-1.dark\\:text-red-300.text-red-900.dark\\:bg-red-900.bg-red-100.dark\\:border-red-700.border-red-400.items-center.shadow.border-l-8.flex.p-2.rounded\n\n! Aug 30, 2025 https://asuracomic.net\nasuracomic.net##.z-30.relative.py-6.px-4.mx-auto.max-w-7xl\n\n! Sep 1, 2025 https://asuracomic.net\nasuracomic.net##.p-8.z-20.relative\nasuracomic.net##.backdrop-blur-sm.bg-black\\/70.inset-0.absolute\nasuracomic.net##.rounded-3xl.bg-\\[\\#222222\\].border-0.justify-center.sm\\:py-5.py-5.px-0.w-full.items-center.sm\\:rounded-lg.data-\\[state\\=open\\]\\:slide-in-from-top-\\[48\\%\\].data-\\[state\\=open\\]\\:slide-in-from-left-1\\/2.data-\\[state\\=closed\\]\\:slide-out-to-top-\\[48\\%\\].data-\\[state\\=closed\\]\\:slide-out-to-left-1\\/2.data-\\[state\\=open\\]\\:zoom-in-95.data-\\[state\\=closed\\]\\:zoom-out-95.data-\\[state\\=open\\]\\:fade-in-0.data-\\[state\\=closed\\]\\:fade-out-0.data-\\[state\\=closed\\]\\:animate-out.data-\\[state\\=open\\]\\:animate-in.duration-200.shadow-lg.p-6.gap-4.translate-y-\\[-50\\%\\].translate-x-\\[-50\\%\\].max-w-lg.grid.z-50.top-\\[50\\%\\].left-\\[50\\%\\].fixed\n\n! Sep 15, 2025 https://comick.io\n||meo.comick.pictures/1-OpdDOyuHrVzTM-m.jpg$image\n\n! Oct 31, 2025 https://mangapark.net\nmangapark.net##.space-y-8.py-8.w-full.flex-col.flex > .space-y-5 > div.items-center.justify-center.flex\nmangapark.net##.overflow-hidden.rounded-box.border-r-2.border.border-base-200"
+}

@@ -1,0 +1,31 @@
+{
+  "hyprland/window#personal": {
+    "format": " {0}",
+    "rotate": 0,
+    "separate-outputs": true,
+    "on-scroll-up": "",
+    "on-scroll-down": "",
+    "rewrite": {
+      "(.*)@archlinux:(.*)": "Terminal \uf489 → $2",
+      "(.*) — Zen Browser": " Zen \ue743 → $1",
+      "(.*)Zen Browser": " Zen \ue743",
+      "(.*) - mpv": " mpv → $1",
+      "(.*)mpv": " mpv \uf03d",
+      "(.*) — Dolphin": " Dolphin \udb80\ude4b → $1",
+      "(.*) - Visual Studio Code": "Code \udb82\ude1e → $1",
+      "(.*)Visual Studio Code": "Code \udb82\ude1e",
+      "(.*) - Code - OSS": "Code \udb82\ude1e → $1",
+      "(.*)Code - OSS": "Code \udb82\ude1e",
+      "(.*)Steam": "Steam \udb81\udcd3",
+      "(.*) - Discord": "Discord \uf1ff → $1",
+      "(.*)Netflix": "Netflix \udb81\udf46",
+      "(.*) — Google Chrome": "Chrome \ue743 → $1",
+      "(.*)Google Chrome": "Chrome \ue743",
+      "(.*) — Github": "Github \ue709 → $1",
+      "(.*)Github": "Github \ue709",
+      "(.*)Spotify Free": "Spotify \udb81\udcc7",
+      "(.*)Spotify Premium": "Spotify \udb81\udcc7"
+    },
+    "max-length": 50
+  }
+}
