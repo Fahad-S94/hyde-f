@@ -13,7 +13,6 @@ fi
 
 cloneDir="${cloneDir:-$CLONE_DIR}"
 flg_DryRun=${flg_DryRun:-0}
-
 # sddm
 if pkg_installed sddm; then
     print_log -c "[DISPLAYMANAGER] " -b "detected :: " "sddm"
@@ -35,6 +34,16 @@ if pkg_installed sddm; then
             sudo touch /etc/sddm.conf.d/the_hyde_project.conf
             sudo cp /etc/sddm.conf.d/the_hyde_project.conf /etc/sddm.conf.d/backup_the_hyde_project.conf
             sudo cp /usr/share/sddm/themes/${sddmtheme}/the_hyde_project.conf /etc/sddm.conf.d/
+            
+            # Configure auto-login
+            print_log -g "[DISPLAYMANAGER] " -b " :: " "configuring auto-login..."
+            sudo tee -a /etc/sddm.conf.d/the_hyde_project.conf > /dev/null <<EOF
+
+[Autologin]
+User=${USER}
+Session=hyprland
+EOF
+            print_log -g "[DISPLAYMANAGER] " -b " :: " "auto-login enabled for ${USER}"
         fi
 
         print_log -g "[DISPLAYMANAGER] " -b " :: " "sddm configured with ${sddmtheme} theme..."
