@@ -143,3 +143,16 @@ S|${HOME}/.config/hypr|hyprlock|hyprlock
 
  Idle daemon 
 P|${HOME}/.config/hypr|hypridle.conf|hypridle
+
+S|${HOME}/.config/zsh/functions|zsh-abbr.zsh|zsh zsh-abbr
+S|${HOME}/.config/zsh/functions|atuin.zsh|zsh atuin
+
+# Media Player
+S|${HOME}/.config/mpv|mpv.conf input.conf|mpv
+S|${HOME}/.config/mpv|script-opts|mpv
+# Audio
+S|${HOME}/.config/wireplumber|wireplumber.conf.d|wireplumber
+# Terminal
+S|${HOME}/.config/alacritty|alacritty.toml|alacritty
+# Shell History
+S|${HOME}/.config/atuin|config.toml|atuin
