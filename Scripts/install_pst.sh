@@ -138,32 +138,30 @@ if pkg_installed ddcutil; then
         print_log -y "[DDCUTIL] " -b " :: " "ddcutil is not installed..."
     fi
 
-    
 # mpv - install uosc, playlistmanager, and thumbfast scripts
 if pkg_installed mpv; then
     print_log -c "[MPV] " -b "detected :: " "mpv"
-    
-    mpv_scripts_dir="${HOME}/.config/mpv/scripts"
-    mpv_playlists_dir="${HOME}/.config/mpv/playlists"
-    
+    mpv_config_dir="${HOME}/.config/mpv"
+    mpv_scripts_dir="${mpv_config_dir}/scripts"
+    mpv_playlists_dir="${mpv_config_dir}/playlists"
     if [ ${flg_DryRun} -eq 1 ]; then
         print_log -g "[MPV] " -b " :: " "would install mpv scripts..."
     else
-        # Create scripts and playlists directories if they don't exist
+        # Create directories if they don't exist
         mkdir -p "${mpv_scripts_dir}"
         mkdir -p "${mpv_playlists_dir}"
-        print_log -g "[MPV] " -b " :: " "playlists directory created"
-        
+        print_log -g "[MPV] " -b " :: " "directories created"
+
         print_log -g "[MPV] " -b " :: " "installing uosc..."
-        if [ ! -f "${mpv_scripts_dir}/uosc.lua" ]; then
+        if [ ! -f "${mpv_scripts_dir}/uosc/main.lua" ]; then
             curl -sL "https://github.com/tomasklaen/uosc/releases/latest/download/uosc.zip" -o /tmp/uosc.zip
-            unzip -q /tmp/uosc.zip -d "${mpv_scripts_dir}"
+            unzip -q /tmp/uosc.zip -d "${mpv_config_dir}"
             rm /tmp/uosc.zip
-            print_log -g "[MPV] " -b " :: " "uosc installed"
+            print_log -g "[MPV] " -b " :: " "uosc installed (scripts/uosc/ and fonts/)"
         else
             print_log -y "[MPV] " -b " :: " "uosc already installed"
         fi
-        
+
         print_log -g "[MPV] " -b " :: " "installing playlistmanager..."
         if [ ! -f "${mpv_scripts_dir}/playlistmanager.lua" ]; then
             curl -sL "https://raw.githubusercontent.com/jonniek/mpv-playlistmanager/master/playlistmanager.lua" \
@@ -172,7 +170,7 @@ if pkg_installed mpv; then
         else
             print_log -y "[MPV] " -b " :: " "playlistmanager already installed"
         fi
-        
+
         print_log -g "[MPV] " -b " :: " "installing thumbfast..."
         if [ ! -f "${mpv_scripts_dir}/thumbfast.lua" ]; then
             curl -sL "https://raw.githubusercontent.com/po5/thumbfast/master/thumbfast.lua" \
@@ -181,7 +179,7 @@ if pkg_installed mpv; then
         else
             print_log -y "[MPV] " -b " :: " "thumbfast already installed"
         fi
-        
+
         print_log -g "[MPV] " -b " :: " "mpv scripts installation complete"
     fi
 else
