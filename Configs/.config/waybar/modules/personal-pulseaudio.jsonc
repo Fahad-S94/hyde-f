@@ -1,6 +1,7 @@
 {
 	"pulseaudio#personal": {
-		"format": "{icon} {volume}",
+		// "format": "{icon} {volume}",
+		"format": "{icon}",
 		"rotate": 0,
 		"format-muted": "婢",
 		"on-click": "hyde-shell volumecontrol -o m",
@@ -21,4 +22,3 @@
 		}
 	}
 }
-
