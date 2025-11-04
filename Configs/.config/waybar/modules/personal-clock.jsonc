@@ -1,0 +1,28 @@
+{
+	"clock#personal": {
+		"interval": 60,
+		//"format": "{:%T \udb80\udced %d\u00b7%m\u00b7%y}",
+		"format": "{:%a, %b %d \udb80\udced %I:%M}",
+		"rotate": 0,
+		// "format-alt": "{:%a, %b %d \udb80\udced %I:%M:%S}",
+		"tooltip-format": "<span>{calendar}</span>",
+		"calendar": {
+			"mode": "month",
+			"mode-mon-col": 3,
+			"on-scroll": 1,
+			"on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b>{}</b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	}
+}
