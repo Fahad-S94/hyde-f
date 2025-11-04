@@ -206,13 +206,13 @@ font_size = 10  # Font size for notifications.
 
 # Hyprland configuration.
 [hyprland]
-browser = "firefox"  # Browser.
-editor = "code"  # Editor.
+browser = "zen-browser"  # Browser.
+editor = "neovim"  # Editor.
 explorer = "dolphin"  # File manager.
 idle = "hypridle"  # Idle manager.
 lockscreen = "lockscreen.sh"  # Lockscreen.
-terminal = "kitty"  # Terminal.
-quickapps = "kitty"  # Quick apps.
+terminal = "alacritty"  # Terminal.
+quickapps = "alacritty"  # Quick apps.
 bar = "waybar"  # Bar.
 color_scheme = "prefer-dark"  # Color scheme.
 gtk_theme = "Wallbash-Gtk"  # GTK theme.
@@ -221,31 +221,31 @@ cursor_size = 24  # Cursor size.
 cursor_theme = "Bibata-Modern-Ice"  # Cursor theme.
 button_layout = ""  # Button layout. (gtk only)
 document_font_size = 10  # Document font size.
-font = "Canterell"  # Font.
+font = "Inter"  # Font.
 font_antialiasing = "rgba"  # Font antialiasing.
 font_hinting = "full"  # Font hinting.
 font_size = 10  # Font size.
-monospace_font = "CaskaydiaCove Nerd Font Mono"  # Monospace font.
+monospace_font = "JetBrainsMono Nerd Font"  # Monospace font.
 monospace_font_size = 9  # Monospace font size.
 background_path = ""  # LockScreen's Background path.
 
 # Qt5 configuration.
 [qt5]
-font = "Canterell"  # Qt5 font.
+font = "Inter"  # Qt5 font.
 font_size = 10  # Qt5 font size.
-monospace_font = "CaskaydiaCove Nerd Font Mono"  # Qt5 monospace font.
+monospace_font = "JetBrainsMono Nerd Font"  # Qt5 monospace font.
 monospace_font_size = 9  # Qt5 monospace font size.
 
 # Qt6 configuration.
 [qt6]
-font = "Canterell"  # Qt6 font.
+font = "Inter"  # Qt6 font.
 font_size = 10  # Qt6 font size.
-monospace_font = "CaskaydiaCove Nerd Font Mono"  # Qt6 monospace font.
+monospace_font = "JetBrainsMono Nerd Font"  # Qt6 monospace font.
 monospace_font_size = 9  # Qt6 monospace font size.
 
 # GTK3 configuration.
 [gtk3]
-font = "Canterell"  # GTK3 font.
+font = "Inter"  # GTK3 font.
 font_size = 10  # GTK3 font size.
 
 # Hyprland start configuration.
