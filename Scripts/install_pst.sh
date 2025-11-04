@@ -220,3 +220,24 @@ if pkg_installed neovim; then
     else
         print_log -y "[NEOVIM] " -b " :: " "neovim is not installed..."
 fi
+
+# hyprland scripts - ensure proper permissions
+if pkg_installed hyprland; then
+    hypr_scripts_dir="${HOME}/.config/hypr/scripts"
+    
+    if [ -d "${hypr_scripts_dir}" ]; then
+        print_log -c "[HYPRLAND] " -b "detected :: " "hyprland scripts"
+        
+        if [ ${flg_DryRun} -eq 1 ]; then
+            print_log -g "[HYPRLAND] " -b " :: " "would make scripts executable..."
+        else
+            print_log -g "[HYPRLAND] " -b " :: " "making scripts executable..."
+            chmod +x "${hypr_scripts_dir}"/*.sh 2>/dev/null
+            print_log -g "[HYPRLAND] " -b " :: " "scripts permissions set"
+        fi
+    else
+        print_log -y "[HYPRLAND] " -b " :: " "scripts directory not found"
+    fi
+else
+    print_log -y "[HYPRLAND] " -b " :: " "hyprland is not installed..."
+fi
