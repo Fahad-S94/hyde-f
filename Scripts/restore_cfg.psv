@@ -156,3 +156,5 @@ S|${HOME}/.config/wireplumber|wireplumber.conf.d|wireplumber
 S|${HOME}/.config/alacritty|alacritty.toml|alacritty
 # Shell History
 S|${HOME}/.config/atuin|config.toml|atuin
+# Hyprland Scripts
+S|${HOME}/.config/hypr|scripts|hyprland
