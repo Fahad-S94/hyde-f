@@ -230,10 +230,18 @@ if pkg_installed hyprland; then
         
         if [ ${flg_DryRun} -eq 1 ]; then
             print_log -g "[HYPRLAND] " -b " :: " "would make scripts executable..."
+            print_log -g "[HYPRLAND] " -b " :: " "would refresh brightness-control cache..."
         else
             print_log -g "[HYPRLAND] " -b " :: " "making scripts executable..."
             chmod +x "${hypr_scripts_dir}"/*.sh 2>/dev/null
             print_log -g "[HYPRLAND] " -b " :: " "scripts permissions set"
+            
+            # Refresh brightness-control cache
+            if [ -f "${hypr_scripts_dir}/brightness-control.sh" ]; then
+                print_log -g "[HYPRLAND] " -b " :: " "refreshing brightness-control cache..."
+                "${hypr_scripts_dir}/brightness-control.sh" --refresh-cache
+                print_log -g "[HYPRLAND] " -b " :: " "brightness-control cache updated"
+            fi
         fi
     else
         print_log -y "[HYPRLAND] " -b " :: " "scripts directory not found"
