@@ -1,0 +1,31 @@
+{
+	"custom/brightness#personal": {
+		"format": "{icon} {text}",
+		"format-icons": ["", "", "", "", "", "", "", "", ""],
+		// "format-icons": ["󰹐", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"],
+		"return-type": "json",
+		"interval": 2,
+		"exec": "~/.config/hypr/scripts/brightness-control.sh --waybar",
+		"on-scroll-up": "~/.config/hypr/scripts/brightness-control.sh --waybar-up",
+		"on-scroll-down": "~/.config/hypr/scripts/brightness-control.sh --waybar-down",
+		"on-click": "~/.config/hypr/scripts/brightness-control.sh --waybar-click",
+		"tooltip": true,
+		"smooth-scrolling-threshold": 1.0
+	}
+}
+//
+// "format-icons": ["󰺷", "󰺸", "󰺹", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓"]
+//   "format-icons": ["󰽤", "󰽥", "󰽦", "󰽧", "󰽨", "󰽩", "󰽪"]
+//   "format-icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠", "󱩎", "󱩏"]
+//   "format-icons": ["󰌶", "󱃔", "󱃕", "󱃖", "󱃗", "󱃘", "󱃙", "󰛨"]
+//   "format-icons": ["󰹐", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒"]
+//   "format-icons": ["󰛩", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕"]
+// "format-icons": ["", "", "", "", "", "", "", "", ""]
+//   "format-icons": ["", "", "", "", "", "", ""]
+//   "format-icons": ["󰃞", "󰃟", "󰃝", "󰃠", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒"]
+//   "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"]
+//   "format-icons": ["󰛩", "󱩎", "󱩐", "󱩒", "󱩔", "󱩕", "󱩖"]
+//   "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"]
+//   "format-icons": ["󰽤", "󰽥", "󰽦", "󰽧", "󰽨", "󰽩", "󰽪"]
+//   "format-icons": ["󰃞", "󰃟", "󰃝", "󰃠", "󱩎", "󱩏", "󱩐"]
+//   "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"]
