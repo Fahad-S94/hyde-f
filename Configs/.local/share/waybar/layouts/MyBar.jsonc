@@ -16,8 +16,8 @@
 	"group/pill#left1": {
 		"orientation": "inherit",
 		"modules": [
-			"custom/rofi#personal",
-			"hyprland/window#personal"
+			"custom/rofi",
+			"hyprland/window"
 			// "custom/weather"
 		]
 	},
@@ -28,7 +28,7 @@
 	"modules-center": ["group/pill#center"],
 	"group/pill#center": {
 		"orientation": "inherit",
-		"modules": ["hyprland/workspaces#personal"]
+		"modules": ["hyprland/workspaces"]
 	},
 	"modules-right": [
 		"group/pill#right1",
@@ -37,14 +37,14 @@
 	],
 	"group/pill#right1": {
 		"orientation": "inherit",
-		"modules": ["wlr/taskbar#personal"]
+		"modules": ["wlr/taskbar"]
 	},
 	"group/pill#right2": {
 		"orientation": "inherit",
 		"modules": [
 			"pulseaudio",
 			"custom/hyprsunset",
-			"custom/brightness#personal"
+			"custom/brightness"
 			// "tray#personal"
 		]
 	},
@@ -52,11 +52,11 @@
 		"orientation": "inherit",
 		"modules": [
 			// "custom/hyprsunset",
-			// "custom/brightness#personal",
+			// "custom/brightness",
 			"tray#personal",
 			"clock#personal",
-			"custom/hyde-menu#personal",
-			"custom/power#personal"
+			"custom/hyde-menu",
+			"custom/power"
 		]
 	}
 }
