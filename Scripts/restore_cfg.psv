@@ -159,5 +159,5 @@ S|${HOME}/.config/atuin|config.toml|atuin
 # Hyprland Scripts
 S|${HOME}/.config/hypr|scripts|hyprland
 # Personal Waybar modules and layouts
-S|${HOME}/.config/waybar/modules|personal-brightness.jsonc personal-pulseaudio.jsonc personal-clock.jsonc personal-rofi.jsonc personal-custom-hyde-menu.jsonc personal-tray.json personal-custom-power.jsonc personal-wlr-taskbar.jsonc personal-hyprland-window.jsonc personal-workspaces.jsonc|waybar
-S|${HOME}/.config/waybar/layouts|MyBar.jsonc|waybar
+# S|${HOME}/.config/waybar/modules|personal-brightness.jsonc personal-pulseaudio.jsonc personal-clock.jsonc personal-rofi.jsonc personal-custom-hyde-menu.jsonc personal-tray.json personal-custom-power.jsonc personal-wlr-taskbar.jsonc personal-hyprland-window.jsonc personal-workspaces.jsonc|waybar
+# S|${HOME}/.config/waybar/layouts|MyBar.jsonc|waybar
