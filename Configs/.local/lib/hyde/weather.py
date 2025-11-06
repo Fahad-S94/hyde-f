@@ -250,8 +250,8 @@ current_weather = weather["current_condition"][0]
 data["text"] = get_temperature(current_weather)
 if show_icon:
     data["text"] = get_weather_icon(current_weather) + data["text"]
-if show_location:
-    data["text"] += f" | {get_city_name(weather)}, {get_country_name(weather)}"
+#if show_location:
+#    data["text"] += f" | {get_city_name(weather)}, {get_country_name(weather)}"
 
 # waybar tooltip
 data["tooltip"] = ""
