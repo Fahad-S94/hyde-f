@@ -258,11 +258,6 @@
             </object>
         </child>
 
-        <child>
-            <object class="GtkMenuItem" id="about-hyde">
-                <property name="label">  About</property>
-            </object>
-        </child>
 
     </object>
 </interface>
