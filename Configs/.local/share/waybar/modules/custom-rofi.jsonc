@@ -1,5 +1,5 @@
 {
-    "custom/rofi#personal": {
+    "custom/rofi": {
         "format": "󰣇",
         "tooltip": false,
         "on-click": "pkill -x rofi || /home/fahad/.local/lib/hyde/rofilaunch.sh d",
