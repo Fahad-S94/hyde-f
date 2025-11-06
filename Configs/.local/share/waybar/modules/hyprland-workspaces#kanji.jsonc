@@ -1,14 +1,16 @@
 {
     "hyprland/workspaces#kanji": {
-        "rotate": 0,
-        "class": "no-margin-padding",
-        "all-outputs": true,
-        "active-only": false,
-        "on-click": "activate",
-        "disable-scroll": false,
-        "on-scroll-up": "hyprctl dispatch workspace -1",
-        "on-scroll-down": "hyprctl dispatch workspace +1",
-        "persistent-workspaces": {},
+		"rotate": 0,
+		"class": "no-margin-padding",
+		"all-outputs": true,
+		"active-only": false,
+		"on-click": "activate",
+		"disable-scroll": false,
+		"on-scroll-up": "hyprctl dispatch workspace +1",
+		"on-scroll-down": "hyprctl dispatch workspace -1",
+		"persistent-workspaces": {
+			"*": [1, 2, 3, 4, 5]
+		},
         "format": "{icon}",
         "format-icons": {
             "1": "一",
