@@ -10,6 +10,8 @@
         "on-click": "activate",
         "on-click-right": "fullscreen",
         "on-click-middle": "close",
+        "on-scroll-up": "",
+        "on-scroll-down": "",
         "class": "no-margin-padding",
         "ignore-list": [
             ""
