@@ -1,5 +1,5 @@
 {
-	"custom/brightness#personal": {
+	"custom/brightness": {
 		"format": "{icon} {text}",
 		"format-icons": ["", "", "", "", "", "", "", "", ""],
 		// "format-icons": ["󰹐", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"],
