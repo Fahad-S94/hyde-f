@@ -53,6 +53,37 @@
                     </object>
                 </child>
             </object>
+    </child>
+
+
+          <child>
+            <object class="GtkMenuItem" id="wallbash_menu">
+                <property name="label">  Wallbash</property>
+                <child type="submenu">
+                    <object class="GtkMenu">
+
+                        <child>
+                            <object class="GtkMenuItem" id="wallbash-select">
+                                <property name="label">  Select Mode</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuItem" id="wallbash-next-mode">
+                                <property name="label">  Next Mode</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuItem" id="wallbash-prev-mode">
+                                <property name="label">  Previous Mode</property>
+                            </object>
+                        </child>
+
+
+                    </object>
+                </child>
+            </object>
         </child>
 
 
