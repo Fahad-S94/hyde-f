@@ -1,5 +1,5 @@
 {
-	"clock#personal": {
+	"clock": {
 		"interval": 60,
 		//"format": "{:%T \udb80\udced %d\u00b7%m\u00b7%y}",
 		"format": "{:%a, %b %d \udb80\udced %I:%M}",
