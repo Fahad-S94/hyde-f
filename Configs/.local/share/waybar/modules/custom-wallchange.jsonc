@@ -1,6 +1,7 @@
 {
 	"custom/wallchange": {
 		"format": "\udb80\udd8a {0}",
+		"format": "\udb80\udd8a",
 		"rotate": 0,
 		"tooltip-format": "\udb80\udd8a Switch wallpaper",
 		"on-click": "hyde-shell wallpaper --backend swww --next --global",
