@@ -2,33 +2,36 @@
 @define-color bar-bg rgba(0, 0, 0, 0);
 
 * {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 900;
   /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); */
 }
 
 #clock {
-  font-size: 15.5px;
+  font-size: 15px;
 }
 
-#pulseaudio {
-  font-size: 18px;
-}
+/* #pulseaudio { */
+/*   font-size: 18px; */
+/* } */
 
 /* #tray, */
 #custom-rofi,
 #custom-power,
 #custom-hyde-menu {
-  font-size: 15.5px;
+  font-size: 16px;
 }
 
 #custom-hyprsunset,
-#custom-brightness {
+#custom-brightness,
+#custom-wallchange,
+#pulseaudio {
   font-size: 18px;
 }
 
 #tray {
   font-size: 0px;
+  padding-left: 5px;
 }
 
 window#waybar.top .modules-left,
@@ -80,26 +83,26 @@ window#waybar.bottom #pill {
 /* Remove padding inside pills */
 window#waybar.top #pill,
 window#waybar.bottom #pill {
-  padding: 0em 0.1em 0em 0.1em;
-  margin: 0em 0.3em 0em 0.3em;
+  padding: 0em 0em 0em 0em;
+  margin: 0em 0em 0em 0em;
   /* keep the margin between pills */
 }
 
 /* Remove padding from modules inside pills */
-window#waybar.top #pill .module,
-window#waybar.bottom #pill .module {
-  padding: 0em 0.1em 0em 0.1em;
-  margin: 0em 0.5em 0em 0.5em;
-}
+/* window#waybar.top #pill .module, */
+/* window#waybar.bottom #pill .module { */
+/* padding: 0em 0.1em 0em 0.1em; */
+/* margin: 0em 0.5em 0em 0.5em; */
+/* } */
 
 /* Tighten up label spacing inside pills */
-window#waybar.top #pill label.module,
-window#waybar.bottom #pill label.module {
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  margin-left: 0.3em;
-  margin-right: 0.3em;
-}
+/* window#waybar.top #pill label.module, */
+/* window#waybar.bottom #pill label.module { */
+/*   padding-left: 0.2em; */
+/*   padding-right: 0.2em; */
+/*   margin-left: 0.3em; */
+/*   margin-right: 0.3em; */
+/* } */
 
 #pill,
 #pill-right,
