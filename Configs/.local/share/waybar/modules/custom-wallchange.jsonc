@@ -1,12 +1,25 @@
 {
-    "custom/wallchange": {
-        "format": "\udb80\udd8a {0}",
-        "rotate": 0,
-        "tooltip-format": "\udb80\udd8a Switch wallpaper",
-        "on-click": "hyde-shell wallpaper -n",
-        "on-click-right": "hyde-shell wallpaper -p",
-        "on-click-middle": "hyde-shell wallpaper --select", 
-        "interval": 86400,
-        "tooltip": true
-    }
+	"custom/wallchange": {
+		"format": "\udb80\udd8a {0}",
+		"rotate": 0,
+		"tooltip-format": "\udb80\udd8a Switch wallpaper",
+		"on-click": "hyde-shell wallpaper --backend swww --next --global",
+		"on-click-right": "hyde-shell wallpaper --backend swww --previous --global",
+		"on-click-middle": "hyde-shell wallpaper --backend swww --random --global",
+		"interval": 86400,
+		"tooltip": true
+	}
 }
+//
+// {
+// 	"custom/wallchange": {
+// 		"format": "\udb80\udd8a {0}",
+// 		"rotate": 0,
+// 		"tooltip-format": "\udb80\udd8a Switch wallpaper",
+// 		"on-click": "hyde-shell wallpaper -n",
+// 		"on-click-right": "hyde-shell wallpaper -p",
+// 		"on-click-middle": "hyde-shell wallpaper --select",
+// 		"interval": 86400,
+// 		"tooltip": true
+// 	}
+// }
