@@ -56,8 +56,8 @@ window#waybar.bottom #pill {
 /* } */
 
 #workspaces button {
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 1.75em;
+  padding-right: 1.75em;
 }
 
 #workspaces button.empty {
@@ -65,8 +65,8 @@ window#waybar.bottom #pill {
 }
 
 #workspaces button.active {
-  padding-left: 5em;
-  padding-right: 5em;
+  padding-left: 4.75em;
+  padding-right: 4.75em;
   opacity: 1;
 }
 
