@@ -1,6 +1,7 @@
 {
-	"custom/brightness": {
-		"format": "{icon} {text}",
+	"custom/brightness#personal": {
+		// "format": "{icon} {text}",
+		"format": "{icon}",
 		"format-icons": ["", "", "", "", "", "", "", "", ""],
 		// "format-icons": ["󰹐", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"],
 		"return-type": "json",
