@@ -89,7 +89,7 @@ window#waybar.bottom #pill {
 window#waybar.top #pill,
 window#waybar.bottom #pill {
   padding: 0em 0em 0em 0em;
-  margin: 0em 0em 0em 0em;
+  margin: 0em 0.2em 0em 0.2em;
   /* keep the margin between pills */
 }
 
