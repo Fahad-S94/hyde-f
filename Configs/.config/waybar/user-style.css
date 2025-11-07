@@ -27,6 +27,10 @@
   font-size: 18px;
 }
 
+#tray {
+  font-size: 0px;
+}
+
 window#waybar.top .modules-left,
 window#waybar.top .modules-center,
 window#waybar.top .modules-right,
