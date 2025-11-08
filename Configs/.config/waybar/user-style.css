@@ -70,9 +70,14 @@ window#waybar.bottom #pill {
   opacity: 1;
 }
 
-#workspaces {
+#workspaces,
+#taskbar {
   padding-right: 4px;
   padding-left: 4px;
+}
+
+#window {
+  padding-right: 5px;
 }
 
 #taskbar button {
