@@ -16,8 +16,8 @@
 	"group/pill#left1": {
 		"orientation": "inherit",
 		"modules": [
-			"custom/rofi",
-			"hyprland/window"
+			"custom/rofi#personal",
+			"hyprland/window#personal"
 			// "custom/weather"
 		]
 	},
@@ -28,7 +28,7 @@
 	"modules-center": ["group/pill#center"],
 	"group/pill#center": {
 		"orientation": "inherit",
-		"modules": ["hyprland/workspaces"]
+		"modules": ["hyprland/workspaces#personal"]
 	},
 	"modules-right": [
 		"group/pill#right1",
@@ -44,8 +44,9 @@
 		"modules": [
 			"pulseaudio",
 			"custom/hyprsunset",
-			"custom/brightness",
-			"custom/wallchange"
+			"custom/brightness#personal",
+			// "custom/wallchange",
+			"custom/theme"
 			// "tray#personal"
 		]
 	},
@@ -53,8 +54,8 @@
 		"orientation": "inherit",
 		"modules": [
 			// "custom/hyprsunset",
-			// "custom/brightness",
-			"tray#personal",
+			// "custom/brightness#personal",
+			"tray",
 			"clock#personal",
 			"custom/hyde-menu",
 			"custom/power"
