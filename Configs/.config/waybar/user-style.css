@@ -25,6 +25,7 @@
 #custom-hyprsunset,
 #custom-brightness,
 #custom-wallchange,
+#custom-theme,
 #pulseaudio {
   font-size: 18px;
 }
@@ -124,3 +125,4 @@ window#waybar.bottom #pill {
   border-left: 2px dashed @wb-act-bg;
   border-right: 2px dashed @wb-act-bg;
 }
+
