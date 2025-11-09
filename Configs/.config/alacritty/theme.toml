@@ -1,34 +1,33 @@
-# Auto-generated from Hyde Kitty theme: Green Lush
-# Generated on Sat Nov  1 12:37:38 AM EDT 2025
+# Auto-generated Alacritty theme via wallbash
 
 [colors.primary]
-background = '#0A1010'
+background = '#1B0A0D'
 foreground = '#FFFFFF'
 
 [colors.cursor]
-cursor = '#118911'
-text = '#FFFFFF'
+cursor = '#D29B8D'
+text = '#0C0D0D'
 
 [colors.selection]
 background = '#FFFFFF'
-text = '#0A1010'
+text = '#1B0A0D'
 
 [colors.normal]
-black = '#295252'
-red = '#CCFFCC'
-green = '#11b811'
-yellow = '#CCFFCC'
-blue = '#12b812'
-magenta = '#9AE6E6'
-cyan = '#9BE6E6'
-white = '#CCFFCC'
+black = '#522930'
+red = '#FFD6CC'
+green = '#FFCCD5'
+yellow = '#CCDFFF'
+blue = '#E69AA7'
+magenta = '#E69AA7'
+cyan = '#9AB6E6'
+white = '#FFD6CC'
 
 [colors.bright]
-black = '#578F8F'
-red = '#AAF0AA'
-green = '#AAF0F0'
-yellow = '#AAF0AA'
-blue = '#12b812'
-magenta = '#9AE6E6'
-cyan = '#9BE6E6'
-white = '#AAF0AA'
+black = '#8F5761'
+red = '#F0B8AA'
+green = '#F0AAB6'
+yellow = '#AAC4F0'
+blue = '#E69AA7'
+magenta = '#E69AA7'
+cyan = '#9AB6E6'
+white = '#F0B8AA'
