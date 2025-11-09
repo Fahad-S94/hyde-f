@@ -3,6 +3,8 @@
 		"format": "{0}",
 		"rotate": 10,
 		"tooltip-format": "\udb81\udfe1 Switch theme",
+		"on-scroll-up": "",
+		"on-scroll-down": "",
 		"on-click": "hyde-shell themeswitch -n",
 		"on-click-right": "hyde-shell themeswitch -p",
 		// "on-click-middle": "sleep 0.1 && hyde-shell themeselect",
