@@ -1,0 +1,34 @@
+$HOME/.config/alacritty/theme.toml
+# Auto-generated Alacritty theme via wallbash
+
+[colors.primary]
+background = '#<wallbash_pry1>'
+foreground = '#<wallbash_txt1>'
+
+[colors.cursor]
+cursor = '#<wallbash_pry4>'
+text = '#<wallbash_txt4>'
+
+[colors.selection]
+background = '#<wallbash_txt1>'
+text = '#<wallbash_pry1>'
+
+[colors.normal]
+black = '#<wallbash_1xa1>'
+red = '#<wallbash_4xa9>'
+green = '#<wallbash_2xa9>'
+yellow = '#<wallbash_3xa9>'
+blue = '#<wallbash_1xa7>'
+magenta = '#<wallbash_2xa7>'
+cyan = '#<wallbash_3xa7>'
+white = '#<wallbash_4xa9>'
+
+[colors.bright]
+black = '#<wallbash_1xa4>'
+red = '#<wallbash_4xa8>'
+green = '#<wallbash_2xa8>'
+yellow = '#<wallbash_3xa8>'
+blue = '#<wallbash_1xa7>'
+magenta = '#<wallbash_2xa7>'
+cyan = '#<wallbash_3xa7>'
+white = '#<wallbash_4xa8>'
