@@ -87,13 +87,61 @@ if pkg_installed zsh; then
             print_log -sec "SHELL" -err "error" "oh-my-zsh not installed, skipping plugin installation..."
         fi
     fi
+fi
 
+# add fish plugins
+if pkg_installed fish && [ "${myShell}" = "fish" ]; then
+    print_log -sec "SHELL" -stat "configuring" "fish shell"
+    
+    # Install Fisher plugin manager
+    if [ ${flg_DryRun} -eq 1 ]; then
+        print_log -sec "SHELL" -stat "would install" "Fisher plugin manager"
+    else
+        if ! fish -c "type -q fisher" &>/dev/null; then
+            print_log -sec "SHELL" -stat "installing" "Fisher plugin manager"
+            fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher" &>/dev/null
+            if [ $? -eq 0 ]; then
+                print_log -sec "SHELL" -stat "installed" "Fisher plugin manager"
+            else
+                print_log -sec "SHELL" -err "error" "Failed to install Fisher"
+                exit 1
+            fi
+        else
+            print_log -sec "SHELL" -stat "detected" "Fisher already installed"
+        fi
+    fi
+    
+    # Install essential fish plugins
+    if [ ${flg_DryRun} -eq 1 ]; then
+        print_log -sec "SHELL" -stat "would install" "fish plugins (autopair fzf z abbreviation-tips puffer-fish)"
+    else
+        print_log -sec "SHELL" -stat "installing" "fish plugins"
+        fish -c "
+            fisher install jorgebucaran/autopair.fish
+            fisher install PatrickF1/fzf.fish
+            fisher install jethrokuan/z
+            fisher install gazorby/fish-abbreviation-tips
+            fisher install nickeb96/puffer-fish
+        " &>/dev/null
+        
+        if [ $? -eq 0 ]; then
+            print_log -sec "SHELL" -stat "installed" "fish plugins (autopair fzf z abbreviation-tips puffer-fish)"
+        else
+            print_log -sec "SHELL" -warn "warning" "Some fish plugins may have failed to install"
+        fi
+    fi
 fi
 
 # set shell
 if [[ "$(grep "/${USER}:" /etc/passwd | awk -F '/' '{print $NF}')" != "${myShell}" ]]; then
-    print_log -sec "SHELL" -stat "change" "shell to ${myShell}..."
+    print_log -sec "SHELL" -stat "change" "shell to ${myShell}"
     [ ${flg_DryRun} -eq 1 ] || chsh -s "$(which "${myShell}")"
 else
-    print_log -sec "SHELL" -stat "exist" "${myShell} is already set as shell..."
+    print_log -sec "SHELL" -stat "exist" "${myShell} is already set as shell"
+fi
+
+# Final message
+if [ "${myShell}" = "fish" ] && [ ${flg_DryRun} -ne 1 ]; then
+    print_log -sec "SHELL" -stat "complete" "Fish configured with Fisher and plugins"
+    print_log -sec "SHELL" -stat "note" "Log out and back in to use fish as default shell"
 fi
