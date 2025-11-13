@@ -87,7 +87,7 @@ hypridle                                               # idle daemon
 
 mpv
 npm
-neovim
+#neovim
 qbittorrent
 zen-browser-bin
 alacritty
@@ -96,3 +96,6 @@ atuin
 zsh-abbr
 ddcutil
 imv
+eza
+helix
+#rustup
