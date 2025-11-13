@@ -6,9 +6,9 @@
 set -gx EDITOR helix
 set -gx VISUAL helix
 
+#CUSTOM KEYBINDS
 # Ctrl+Up: Move to beginning of line
 bind \e\[1\;5A beginning-of-line
-
 # Ctrl+Down: Move to end of line
 bind \e\[1\;5B end-of-line
 
