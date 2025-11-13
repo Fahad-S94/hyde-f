@@ -6,16 +6,16 @@
 set -gx EDITOR helix
 set -gx VISUAL helix
 
+# Ctrl+Up: Move to beginning of line
+bind \e\[1\;5A beginning-of-line
+
+# Ctrl+Down: Move to end of line
+bind \e\[1\;5B end-of-line
+
 # Custom Aliases
 alias hx='helix'
-alias cat='bat --style=plain --paging=never --color auto'
-alias ls='eza --icons --group-directories-first'
-alias ll='eza -l --icons --group-directories-first'
-alias la='eza -la --icons --group-directories-first'
-alias tree='eza --tree --icons'
 alias c='clear'
-alias vim='helix'
-alias vi='helix'
+alias mkdir='mkdir -p'
 
 # Git Aliases
 alias g='git'
