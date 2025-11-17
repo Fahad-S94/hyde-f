@@ -1,0 +1,362 @@
+{
+        "layer": "top",
+        "position": "bottom",
+        "output": ["*"],
+        "height": 10,
+        "mode": "dock",
+        "exclusive": true,
+        "passthrough": false,
+        "reload_style_on_change": true,
+        
+        // Left side modules
+        "modules-left": ["group/pill#left1", "group/pill#left2"],
+        "group/pill#left1": {
+                "orientation": "inherit",
+                "modules": [
+                        "custom/rofi#personal",
+                        "hyprland/window#personal"
+                ]
+        },
+        "group/pill#left2": {
+                "orientation": "inherit",
+                "modules": ["custom/weather"]
+        },
+        
+        // Center modules
+        "modules-center": ["group/pill#center"],
+        "group/pill#center": {
+                "orientation": "inherit",
+                "modules": ["hyprland/workspaces#personal"]
+        },
+        
+        // Right side modules
+        "modules-right": [
+                "group/pill#right1",
+                "group/pill#right2",
+                "group/pill#right3"
+        ],
+        "group/pill#right1": {
+                "orientation": "inherit",
+                "modules": ["wlr/taskbar"]
+        },
+        "group/pill#right2": {
+                "orientation": "inherit",
+                "modules": [
+                        "pulseaudio",
+                        "custom/hyprsunset",
+                        "custom/brightness#personal",
+                        "custom/theme"
+                ]
+        },
+        "group/pill#right3": {
+                "orientation": "inherit",
+                "modules": [
+                        "tray",
+                        "clock#personal",
+                        "custom/hyde-menu",
+                        "custom/power"
+                ]
+        },
+        
+        // ============================================
+        // MODULE DEFINITIONS
+        // ============================================
+        
+        // Custom Rofi Launcher
+        "custom/rofi#personal": {
+                "format": "󰣇",
+                "tooltip": false,
+                "on-click": "pkill -x rofi || /home/fahad/.local/lib/hyde/rofilaunch.sh d",
+                "on-click-right": "",
+                "on-scroll-up": "",
+                "on-scroll-down": ""
+        },
+        
+        // Hyprland Window Title
+        "hyprland/window#personal": {
+                "format": " {0}",
+                "rotate": 0,
+                "separate-outputs": true,
+                "on-scroll-up": "",
+                "on-scroll-down": "",
+                "rewrite": {
+                        "(.*)@archlinux:(.*)": "Terminal \uf489 → $2",
+                        "(.*) — Zen Browser": " Zen \ue743 → $1",
+                        "(.*)Zen Browser": " Zen \ue743",
+                        "(.*) - mpv": " mpv → $1",
+                        "(.*)mpv": " mpv \uf03d",
+                        "(.*) — Dolphin": " Dolphin \udb80\ude4b → $1",
+                        "(.*) - Visual Studio Code": "Code \udb82\ude1e → $1",
+                        "(.*)Visual Studio Code": "Code \udb82\ude1e",
+                        "(.*) - Code - OSS": "Code \udb82\ude1e → $1",
+                        "(.*)Code - OSS": "Code \udb82\ude1e",
+                        "(.*)Steam": "Steam \udb81\udcd3",
+                        "(.*) - Discord": "Discord \uf1ff → $1",
+                        "(.*)Netflix": "Netflix \udb81\udf46",
+                        "(.*) — Google Chrome": "Chrome \ue743 → $1",
+                        "(.*)Google Chrome": "Chrome \ue743",
+                        "(.*) — Github": "Github \ue709 → $1",
+                        "(.*)Github": "Github \ue709",
+                        "(.*)Spotify Free": "Spotify \udb81\udcc7",
+                        "(.*)Spotify Premium": "Spotify \udb81\udcc7"
+                },
+                "max-length": 40
+        },
+        
+        // Weather Widget
+        "custom/weather": {
+                "exec": "hyde-shell weather",
+                "tooltip": true,
+                "on-scroll-up": "",
+                "on-scroll-down": "",
+                "format": "{0}",
+                "interval": 30,
+                "return-type": "json"
+        },
+        
+        // Hyprland Workspaces
+        "hyprland/workspaces#personal": {
+                "rotate": 0,
+                "class": "no-margin-padding",
+                "all-outputs": true,
+                "active-only": false,
+                "on-click": "activate",
+                "disable-scroll": false,
+                "on-scroll-up": "hyprctl dispatch workspace +1",
+                "on-scroll-down": "hyprctl dispatch workspace -1",
+                "persistent-workspaces": {
+                        "*": [1, 2, 3, 4, 5]
+                },
+                "format": "{icon}",
+                "format-icons": {
+                        "1": "I",
+                        "2": "II",
+                        "3": "III",
+                        "4": "IV",
+                        "5": "V",
+                        "6": "VI",
+                        "7": "VII",
+                        "8": "VIII",
+                        "9": "IX",
+                        "10": "X",
+                        "11": "XI",
+                        "12": "XII",
+                        "13": "XIII",
+                        "14": "XIV",
+                        "15": "XV",
+                        "16": "XVII",
+                        "17": "XVI",
+                        "18": "XVIII",
+                        "19": "XIX",
+                        "20": "XX",
+                        "urgent": "",
+                        "focused": "",
+                        "default": " "
+                }
+        },
+        
+        // Taskbar
+        "wlr/taskbar": {
+                "all-outputs": true,
+                "active-first": false,
+                "markup": true,
+                "format": "{icon}",
+                "rotate": 0,
+                "spacing": 20,
+                "tooltip-format": "{title} | {app_id}",
+                "on-click": "activate",
+                "on-click-right": "fullscreen",
+                "on-click-middle": "close",
+                "on-scroll-up": "",
+                "on-scroll-down": "",
+                "class": "no-margin-padding",
+                "ignore-list": [""],
+                "app_ids-mapping": {
+                        "firefoxdeveloperedition": "firefox-developer-edition",
+                        "firefoxnightly": "firefox-nightly",
+                        "Spotify Free": "Spotify"
+                },
+                "rewrite": {
+                        "Firefox Web Browser": "Firefox",
+                        "Foot Server": "Terminal",
+                        "Spotify Free": "Spotify",
+                        "org.kde.dolphin": "Dolphin",
+                        "libreoffice-writer": "Writer"
+                }
+        },
+        
+        // PulseAudio
+        "pulseaudio": {
+                "format": "{icon}",
+                "rotate": 0,
+                "format-muted": "婢",
+                "on-click": "hyde-shell volumecontrol -o m",
+                "on-click-right": "pavucontrol -t 3",
+                "on-click-middle": "hyde-shell volumecontrol -s ''",
+                "on-scroll-up": "hyde-shell volumecontrol -o i",
+                "on-scroll-down": "hyde-shell volumecontrol -o d",
+                "tooltip-format": "{icon} {desc} | {volume}%",
+                "scroll-step": 5,
+                "format-icons": {
+                        "headphone": "",
+                        "hands-free": "",
+                        "headset": "",
+                        "phone": "",
+                        "portable": "",
+                        "car": "",
+                        "default": ["", "", ""]
+                }
+        },
+        
+        // Hyprsunset (Color Temperature)
+        "custom/hyprsunset": {
+                "return-type": "json",
+                "format": "{0} ",
+                "exec": "hyde-shell hyprsunset -rq",
+                "rotate": 0,
+                "on-click": "hyde-shell hyprsunset -t -P waybar:19",
+                "on-scroll-up": "hyde-shell hyprsunset -i '' -P waybar:19",
+                "on-scroll-down": "hyde-shell hyprsunset -d '' -P waybar:19",
+                "interval": "once",
+                "tooltip": true,
+                "signal": 19,
+                "menu": "on-click-right",
+                "menu-file": "${HYDE_WAYBAR_MENU_DIR:-$XDG_DATA_HOME/waybar/menus}/hyprsunset.xml",
+                "menu-actions": {
+                        "warm-candle": "hyde-shell hyprsunset --cm temp -s 3000 -P waybar:19",
+                        "soft-warm": "hyde-shell hyprsunset --cm temp -s 4000 -P waybar:19",
+                        "neutral-white": "hyde-shell hyprsunset --cm temp -s 5000 -P waybar:19",
+                        "daylight": "hyde-shell hyprsunset --cm temp -s 6500 -P waybar:19",
+                        "cool-white": "hyde-shell hyprsunset --cm temp -s 7500 -P waybar:19",
+                        "bright-blue": "hyde-shell hyprsunset --cm temp -s 9000 -P waybar:19",
+                        "arctic-blue": "hyde-shell hyprsunset --cm temp -s 10000 -P waybar:19",
+                        "gamma-20": "hyde-shell hyprsunset --cm gamma -s 20 -P waybar:19",
+                        "gamma-30": "hyde-shell hyprsunset --cm gamma -s 30 -P waybar:19",
+                        "gamma-40": "hyde-shell hyprsunset --cm gamma -s 40 -P waybar:19",
+                        "gamma-50": "hyde-shell hyprsunset --cm gamma -s 50 -P waybar:19",
+                        "gamma-60": "hyde-shell hyprsunset --cm gamma -s 60 -P waybar:19",
+                        "gamma-70": "hyde-shell hyprsunset --cm gamma -s 70 -P waybar:19",
+                        "gamma-80": "hyde-shell hyprsunset --cm gamma -s 80 -P waybar:19",
+                        "gamma-90": "hyde-shell hyprsunset --cm gamma -s 90 -P waybar:19",
+                        "gamma-100": "hyde-shell hyprsunset --cm gamma -s 100 -P waybar:19"
+                }
+        },
+        
+        // Brightness Control
+        "custom/brightness#personal": {
+                "format": "{icon}",
+                "rotate": 0,
+                "format-icons": ["", "", "", "", "", "", "", "", ""],
+                "return-type": "json",
+                "interval": 2,
+                "exec": "~/.config/hypr/scripts/brightness-control.sh --waybar",
+                "on-scroll-up": "~/.config/hypr/scripts/brightness-control.sh --waybar-up",
+                "on-scroll-down": "~/.config/hypr/scripts/brightness-control.sh --waybar-down",
+                "on-click": "~/.config/hypr/scripts/brightness-control.sh --waybar-click",
+                "tooltip": true,
+                "smooth-scrolling-threshold": 1.0
+        },
+        
+        // Theme Switcher
+        "custom/theme": {
+                "format": "{0}",
+                "rotate": 10,
+                "tooltip-format": "\udb81\udfe1 Switch theme",
+                "on-scroll-up": "hyde-shell wallpaper -n",
+                "on-scroll-down": "hyde-shell wallpaper -p",
+                "on-click": "hyde-shell themeselect",
+                "on-click-right": "hyde-shell wallpaper --backend swww --random --global",
+                "on-click-middle": "/home/fahad/.config/hypr/scripts/random-theme.sh",
+                "interval": 86400,
+                "tooltip": true
+        },
+        
+        // System Tray
+        "tray": {
+                "icon-size": 18,
+                "spacing": 2
+        },
+        
+        // Clock
+        "clock#personal": {
+                "interval": 60,
+                "format": "{:%a, %b %d \udb80\udced %I:%M}",
+                "rotate": 0,
+                "tooltip-format": "<span>{calendar}</span>",
+                "calendar": {
+                        "mode": "month",
+                        "mode-mon-col": 3,
+                        "on-scroll": 1,
+                        "on-click-right": "mode",
+                        "format": {
+                                "months": "<span color='#ffead3'><b>{}</b></span>",
+                                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                                "today": "<span color='#ff6699'><b>{}</b></span>"
+                        }
+                },
+                "actions": {
+                        "on-click-right": "mode",
+                        "on-click-forward": "tz_up",
+                        "on-click-backward": "tz_down",
+                        "on-scroll-up": "shift_up",
+                        "on-scroll-down": "shift_down"
+                }
+        },
+        
+        // HyDE Menu
+        "custom/hyde-menu": {
+                "format": " ",
+                "tooltip": true,
+                "tooltip-format": "Right-click for more HyDE options",
+                "on-scroll-up": "",
+                "on-scroll-down": "",
+                "menu": "on-click-right",
+                "menu-file": "${HYDE_WAYBAR_MENU_DIR:-$XDG_DATA_HOME/waybar/menus}/hyde-menu.xml",
+                "menu-actions": {
+                        "animations-select": "hyde-shell animations --select",
+                        "wallpaper-select": "hyde-shell wallpaper --select --global",
+                        "wallpaper-next": "hyde-shell wallpaper --backend swww --next --global",
+                        "wallpaper-previous": "hyde-shell wallpaper --backend swww --previous --global",
+                        "wallpaper-random": "hyde-shell wallpaper --backend swww --random --global",
+                        "theme-next": "hyde-shell themeswitch -n",
+                        "theme-previous": "hyde-shell themeswitch -p",
+                        "theme-select": "hyde-shell themeselect",
+                        "theme-import": "hyde-shell app -T -- hydectl theme import",
+                        "waybar-restart": "hyde-shell waybar -ubg",
+                        "waybar-reload-css": "sed -i '${/^$/d;}'  $XDG_CONFIG_HOME/waybar/style.css",
+                        "waybar-layout-select": "hyde-shell waybar --select-layout",
+                        "waybar-style-select": "hyde-shell waybar --select-style",
+                        "waybar-layout-next": "hyde-shell waybar --update --next",
+                        "waybar-layout-previous": "hyde-shell waybar --update --prev",
+                        "lockscreen-select": "hyde-shell lockscreen --select",
+                        "workflows-select": "hyde-shell workflows --select;pkill -RTMIN+19 waybar",
+                        "shaders-select": "hyde-shell shaders --select;pkill -RTMIN+19 waybar",
+                        "keybinds-hint": "hyde-shell keybinds_hint",
+                        "about-hyde": "xdg-open https://hydeproject.pages.dev"
+                }
+        },
+        
+        // Power Menu
+        "custom/power": {
+                "format": "{0}",
+                "rotate": 0,
+                "tooltip": true,
+                "tooltip-format": " Logout menu",
+                "on-click": "hyde-shell logoutlaunch 1",
+                "on-scroll-up": "",
+                "on-scroll-down": "",
+                "menu": "on-click-right",
+                "menu-file": "${HYDE_WAYBAR_MENU_DIR:-$XDG_DATA_HOME/waybar/menus}/power.xml",
+                "menu-actions": {
+                        "lock": "hyde-shell lockscreen.sh",
+                        "logout": "hyprctl dispatch exit 0",
+                        "shutdown-now": "shutdown now",
+                        "shutdown-wait": "systemctl poweroff",
+                        "reboot-now": "systemctl reboot",
+                        "reboot-firmware": "systemctl reboot --firmware-setup",
+                        "suspend": "systemctl suspend",
+                        "hibernate": "systemctl hibernate"
+                },
+                "interval": 86400
+        }
+}
