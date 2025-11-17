@@ -163,3 +163,5 @@ S|${HOME}/.config/hypr|scripts|hyprland
 # S|${HOME}/.config/waybar/layouts|MyBar.jsonc|waybar
 # Helix History
 S|${HOME}/.config/helix|config.toml|helix
+# Ghostty Config
+S|${HOME}/.config/ghostty|config|ghostty
