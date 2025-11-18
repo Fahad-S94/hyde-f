@@ -247,3 +247,36 @@ if pkg_installed hyprland; then
 else
     print_log -y "[HYPRLAND] " -b " :: " "hyprland is not installed..."
 fi
+
+# rust-analyzer - install rust-analyzer via rustup
+if pkg_installed rustup; then
+    print_log -c "[RUST] " -b "detected :: " "rustup"
+    
+    if [ ${flg_DryRun} -eq 1 ]; then
+        print_log -g "[RUST] " -b " :: " "would install rust-analyzer..."
+    else
+        # Check if rust-analyzer is already installed
+        if command -v rust-analyzer &> /dev/null; then
+            print_log -y "[RUST] " -b " :: " "rust-analyzer already installed"
+        else
+            print_log -g "[RUST] " -b " :: " "installing rust-analyzer..."
+            rustup component add rust-analyzer
+            
+            if command -v rust-analyzer &> /dev/null; then
+                print_log -g "[RUST] " -b " :: " "rust-analyzer installed successfully"
+            else
+                print_log -r "[RUST] " -b " :: " "rust-analyzer installation failed"
+            fi
+        fi
+        
+        # Optionally check for and install other useful rust components
+        if ! rustup component list | grep -q "installed.*rust-src"; then
+            print_log -g "[RUST] " -b " :: " "installing rust-src (for better IDE support)..."
+            rustup component add rust-src
+        else
+            print_log -y "[RUST] " -b " :: " "rust-src already installed"
+        fi
+    fi
+else
+    print_log -y "[RUST] " -b " :: " "rustup is not installed..."
+fi
