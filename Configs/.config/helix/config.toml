@@ -1,1 +1,73 @@
-theme = "horizon-dark"
+# theme = "horizon-dark"
+# theme = "catppuccin_mocha"
+# theme = "gruvbox_dark_hard"
+theme = "tokyonight"
+# theme = "dracula_at_night"
+# theme = "nord-night"
+# theme = "onedark"
+# theme = "rose-pine"
+# theme = "kanagawa-dragon"
+# theme = "monokai_pro"
+# theme = "everforest_dark"
+# theme = "everblush"
+
+[editor]
+line-number = "relative"
+cursorline = true
+auto-save = false
+bufferline = "multiple"
+color-modes = true
+true-color = true
+trim-trailing-whitespace = true
+# clipboard-provider = "wayland"
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "file-modification-indicator"]
+center = ["version-control"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.indent-guides]
+render = true
+character = "│"
+
+[editor.soft-wrap]
+enable = true
+
+[keys.normal]
+# space.q = ":quit"
+C-s = ":write"
+# C-z = "undo"
+# C-y = "redo"
+S-C-down = ["extend_to_line_bounds", "yank", "paste_after"]
+C-z = 'no_op'
+
+[keys.insert]
+# C-z = "normal_mode"
+# C-y = "normal_mode"
+C-s = ":write"
+
+[keys.select]
+C-s = ":write"
+space.q = ":quit"
+C-z = 'no_op'
+
+[keys.normal.space.q]
+q = ":quit"                    # Space+q+q = quit
+s = ":write-quit"              # Space+q+s = save and quit
+a = ":quit-all"                # Space+q+a = quit all buffers
+f = ":quit!"                   # Space+q+f = force quit (discard changes)
+w = ":write-quit-all"          # Space+q+w = save all and quit
+
