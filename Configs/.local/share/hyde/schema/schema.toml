@@ -756,6 +756,26 @@ type      = "object"
     description = "Lockscreen."
     type        = "string"
 
+#[properties.hyprland.properties.terminal]
+#    default     = "kitty"
+#    description = "Terminal."
+#    type        = "string"
+
+#[properties.hyprland.properties.quickapps]
+#    default     = "kitty"
+#    description = "Quick apps."
+#    type        = "string"
+
+#[properties.hyprland.properties.terminal]
+#    default     = "alacritty"
+#    description = "Terminal."
+#    type        = "string"
+
+#[properties.hyprland.properties.quickapps]
+#    default     = "alacritty"
+#    description = "Quick apps."
+#    type        = "string"
+
 [properties.hyprland.properties.terminal]
     default     = "ghostty"
     description = "Terminal."
