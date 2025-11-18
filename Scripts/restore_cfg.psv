@@ -164,4 +164,4 @@ S|${HOME}/.config/hypr|scripts|hyprland
 # Helix History
 S|${HOME}/.config/helix|config.toml|helix
 # Ghostty Config
-S|${HOME}/.config/ghostty|config|ghostty
+S|${HOME}/.config/|ghostty|ghostty
