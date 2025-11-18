@@ -1,0 +1,26 @@
+config-file = ~/.config/ghostty/theme.conf
+# Font
+font-family = "CaskaydiaCove Nerd Font Mono"
+font-size = 14
+font-style-bold = Bold
+font-style-bold-italic = Bold Italic
+font-style-italic = Italic
+
+# Cursor
+cursor-style = block
+cursor-style-blink = true
+
+# Window
+window-decoration = false
+window-padding-x = 5
+window-padding-y = 5
+
+# Keybindings
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+
+# Recommended Ghostty improvements
+background-opacity = 0.9
+minimum-contrast = 4.5
+shell-integration = detect
+font-thicken = true
