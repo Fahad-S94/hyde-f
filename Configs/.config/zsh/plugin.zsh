@@ -1,6 +1,6 @@
 # Use your plugin system here
 
-return 1 # <--- Comment this line to disable HyDE's oh-my-zsh plugins and use the zinit examples below
+#return 1 # <--- Comment this line to disable HyDE's oh-my-zsh plugins and use the zinit examples below
 
 #! This file will not load, remove the return 1 line above to enable this file.
 #? Below is an example of how to set up Zsh plugins using Zinit
@@ -22,7 +22,7 @@ zinit snippet $ZDOTDIR/prompt.zsh
 
 # Plugin: history-search-multi-word
 # Allows searching your command history by multiple words, making it easier to find previous commands.
-zinit load zdharma-continuum/history-search-multi-word
+#zinit load zdharma-continuum/history-search-multi-word
 
 # Plugin: zsh-autosuggestions
 # Suggests commands as you type based on your history and completions, improving efficiency.
@@ -51,7 +51,7 @@ zinit light zsh-users/zsh-history-substring-search
 
 # Snippet: Oh My Zsh git plugin
 # Loads useful git aliases and functions from Oh My Zsh's git plugin.
-zinit snippet https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
+#zinit snippet https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
 
 # Plugin: zsh-autopair
 # Automatically inserts matching brackets, quotes, etc., as you type.
@@ -59,8 +59,12 @@ zinit light hlissner/zsh-autopair
 
 # Plugin: fzf-tab
 # Enhances tab completion with fzf-powered fuzzy search and a better UI.
-zinit light Aloxaf/fzf-tab
+#zinit light Aloxaf/fzf-tab
 
 # Plugin: alias-tips
 # Shows tips for using defined aliases when you type commands, helping you learn and use your aliases.
-zinit light djui/alias-tips
+#zinit light djui/alias-tips
+
+# Load powerlevel10k theme
+zinit ice depth"1" # git clone depth
+zinit light romkatv/powerlevel10k
