@@ -14,6 +14,14 @@ if [[ $- == *i* ]]; then
     fi
 fi
 
+alias hx='helix'
+
+#KEYBINDS
+bindkey '^[[1;5A' beginning-of-line
+bindkey '^[[1;5B' end-of-line
+bindkey '^[^H'    kill-whole-line        # Ctrl+Alt+Backspace
+
+
 #   Overrides 
 # HYDE_ZSH_NO_PLUGINS=1 # Set to 1 to disable loading of oh-my-zsh plugins, useful if you want to use your zsh plugins system 
 # unset HYDE_ZSH_PROMPT # Uncomment to unset/disable loading of prompts from HyDE and let you load your own prompts
