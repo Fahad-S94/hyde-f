@@ -766,25 +766,25 @@ type      = "object"
 #    description = "Quick apps."
 #    type        = "string"
 
-#[properties.hyprland.properties.terminal]
-#    default     = "alacritty"
-#    description = "Terminal."
-#    type        = "string"
-
-#[properties.hyprland.properties.quickapps]
-#    default     = "alacritty"
-#    description = "Quick apps."
-#    type        = "string"
-
 [properties.hyprland.properties.terminal]
-    default     = "ghostty"
+    default     = "alacritty"
     description = "Terminal."
     type        = "string"
 
 [properties.hyprland.properties.quickapps]
-    default     = "ghostty"
+    default     = "alacritty"
     description = "Quick apps."
     type        = "string"
+
+#[properties.hyprland.properties.terminal]
+#    default     = "ghostty"
+#    description = "Terminal."
+#    type        = "string"
+
+#[properties.hyprland.properties.quickapps]
+ #   default     = "ghostty"
+  #  description = "Quick apps."
+   # type        = "string"
 
 [properties.hyprland.properties.bar]
     default     = "waybar"
