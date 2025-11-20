@@ -1,203 +1,174 @@
 #!/bin/bash
-# Ultra-optimized ddcutil brightness control - minimal lag
+# Optimized brightness control script for Waybar with minimal lag
 
-# CRITICAL: Even more aggressive optimization
-DDCUTIL_FLAGS="--sleep-multiplier 0.05 --skip-ddc-checks --noverify --force-slave-address"
+# DDCUTIL OPTIMIZATION FLAGS - Critical for performance!
+DDCUTIL_FLAGS="--sleep-multiplier 0.05 --skip-ddc-checks --noverify"
 
-# Cache everything
-CACHE_DIR="$HOME/.cache/brightness-control"
-BUS_CACHE="$CACHE_DIR/bus_mappings"
-STATE_DIR="$HOME/.cache/brightness-control"
-
-# OPTIMIZATION: Keep bus number in memory if possible
-if [ -z "$BRIGHTNESS_BUS_CACHE" ]; then
-    export BRIGHTNESS_BUS_CACHE_LOADED=0
-fi
-
-update_bus_cache() {
-    mkdir -p "$CACHE_DIR"
-    ddcutil detect 2>/dev/null | awk '
-        /I2C bus:/ { bus = $NF; gsub(/\/dev\/i2c-/, "", bus) }
-        /DRM_connector:/ {
-            connector = $NF
-            gsub(/card[0-9]+-/, "", connector)
-            if (bus != "" && connector != "") {
-                print connector "=" bus
-                bus = ""
-                connector = ""
-            }
-        }
-    ' >"$BUS_CACHE"
-}
-
+# Function to map Hyprland output names to ddcutil bus numbers
 get_bus_from_output() {
-    local output=$1
-
-    if [ ! -f "$BUS_CACHE" ]; then
-        update_bus_cache
-    fi
-
-    if [ -f "$BUS_CACHE" ]; then
-        local bus=$(grep "^${output}=" "$BUS_CACHE" | cut -d= -f2)
-        if [ ! -z "$bus" ]; then
-            echo "$bus"
-            return
-        fi
-
-        local first_bus=$(head -1 "$BUS_CACHE" | cut -d= -f2)
-        if [ ! -z "$first_bus" ]; then
-            echo "$first_bus"
-            return
-        fi
-    fi
-
-    echo "3"
+	case "$1" in
+	"DP-1") echo "3" ;;     # MSI G271
+	"HDMI-A-1") echo "4" ;; # AOC 2752H
+	*) echo "3" ;;          # Default to main monitor
+	esac
 }
 
-get_monitor_name() {
-    local bus=$1
-    local name_cache="$CACHE_DIR/bus_${bus}_name"
-
-    if [ -f "$name_cache" ]; then
-        cat "$name_cache"
-        return
-    fi
-
-    local name=$(ddcutil --bus $bus $DDCUTIL_FLAGS getvcp 10 2>&1 | grep -oP '(?<=Display\s)[^:]+' | head -1)
-
-    if [ -z "$name" ]; then
-        name=$(ddcutil --bus $bus capabilities 2>&1 | grep -oP '(?<=Model:\s).+' | head -1 | xargs)
-    fi
-
-    if [ -z "$name" ]; then
-        name="Monitor"
-    fi
-
-    echo "$name" | tee "$name_cache"
-}
-
-get_current_brightness() {
-    local bus=$1
-    local state_file="$STATE_DIR/bus_${bus}_brightness"
-
-    if [ -f "$state_file" ]; then
-        cat "$state_file"
-    else
-        CURRENT=$(ddcutil --bus $bus $DDCUTIL_FLAGS getvcp 10 2>/dev/null | sed -n 's/.*current value =[ ]*\([0-9]\+\).*/\1/p')
-        if [ ! -z "$CURRENT" ]; then
-            echo "$CURRENT"
-        else
-            echo "50"
-        fi
-    fi
-}
-
-# Waybar modes
+# Handle Waybar modes (auto-detect monitor from environment)
 if [[ "$1" == "--waybar"* ]]; then
-    BUS=$(get_bus_from_output "$WAYBAR_OUTPUT_NAME")
-    STATE_FILE="$STATE_DIR/bus_${BUS}_brightness"
-    mkdir -p "$STATE_DIR"
+	BUS=$(get_bus_from_output "$WAYBAR_OUTPUT_NAME")
 
-    case "$1" in
-        "--waybar")
-            BRIGHTNESS=$(get_current_brightness $BUS)
-            MONITOR_NAME=$(get_monitor_name $BUS)
-            echo "{\"text\": \"\", \"tooltip\": \"$MONITOR_NAME: $BRIGHTNESS%\", \"percentage\": $BRIGHTNESS, \"class\": \"brightness\"}"
-            exit 0
-            ;;
-        "--waybar-up")
-            OPERATION="+"
-            VALUE=5
-            ;;
-        "--waybar-down")
-            OPERATION="-"
-            VALUE=5
-            ;;
-        "--waybar-click")
-            if [ -f "$STATE_FILE" ]; then
-                CURRENT=$(cat "$STATE_FILE")
-            else
-                CURRENT=$(get_current_brightness $BUS)
-            fi
+	case "$1" in
+	"--waybar")
+		# Display mode - output JSON for Waybar without icons
+		;;
+	"--waybar-up")
+		# Scroll up - increase brightness
+		OPERATION="+"
+		VALUE=5
+		;;
+	"--waybar-down")
+		# Scroll down - decrease brightness
+		OPERATION="-"
+		VALUE=5
+		;;
+	"--waybar-click")
+		# Click - set to 50% (calculate difference)
+		STATE_DIR="$HOME/.cache/brightness-control"
+		STATE_FILE="$STATE_DIR/bus_${BUS}_brightness"
+		mkdir -p "$STATE_DIR"
 
-            DIFF=$((50 - CURRENT))
-            if [ $DIFF -gt 0 ]; then
-                OPERATION="+"
-                VALUE=$DIFF
-            elif [ $DIFF -lt 0 ]; then
-                OPERATION="-"
-                VALUE=$((DIFF * -1))
-            else
-                exit 0
-            fi
-            ;;
-    esac
+		if [ -f "$STATE_FILE" ]; then
+			CURRENT=$(cat "$STATE_FILE")
+		else
+			CURRENT=$(ddcutil --bus $BUS getvcp 10 2>/dev/null | sed -n 's/.*current value =[ ]*\([0-9]\+\).*/\1/p')
+			if [ -z "$CURRENT" ]; then
+				CURRENT=50
+			fi
+		fi
+
+		DIFF=$((50 - CURRENT))
+		if [ $DIFF -gt 0 ]; then
+			OPERATION="+"
+			VALUE=$DIFF
+		elif [ $DIFF -lt 0 ]; then
+			OPERATION="-"
+			VALUE=$((DIFF * -1))
+		else
+			# Already at 50%, do nothing for display mode
+			if [ "$1" = "--waybar" ]; then
+				BRIGHTNESS=50
+			else
+				exit 0
+			fi
+		fi
+		;;
+	esac
 else
-    if [ "$1" = "--refresh-cache" ]; then
-        update_bus_cache
-        echo "Bus cache updated:"
-        cat "$BUS_CACHE"
-        exit 0
-    fi
+	# Original mode - manual bus specification
+	BUS=$1
+	OPERATION=$2
+	VALUE=$3
 
-    BUS=$1
-    OPERATION=$2
-    VALUE=$3
-
-    if [ $# -ne 3 ]; then
-        echo "Usage: $0 <bus_number> <+|-> <value>"
-        echo "   or: $0 --waybar|--waybar-up|--waybar-down|--waybar-click"
-        echo "   or: $0 --refresh-cache"
-        exit 1
-    fi
-
-    STATE_FILE="$STATE_DIR/bus_${BUS}_brightness"
-    mkdir -p "$STATE_DIR"
+	if [ $# -ne 3 ]; then
+		echo "Usage: $0 <bus_number> <+|-> <value>"
+		echo "   or: $0 --waybar|--waybar-up|--waybar-down|--waybar-click"
+		exit 1
+	fi
 fi
 
-CURRENT_BRIGHTNESS=$(get_current_brightness $BUS)
+# Get monitor name based on bus number
+get_monitor_name() {
+	case $1 in
+	6) echo "MSI" ;; # Bus 6 - MSI G271 (DP-1)
+	7) echo "AOC" ;; # Bus 7 - AOC 2752H (HDMI-A-1)
+	*) echo "Monitor (Bus $1)" ;;
+	esac
+}
+
+# State files to track brightness
+STATE_DIR="$HOME/.cache/brightness-control"
+STATE_FILE="$STATE_DIR/bus_${BUS}_brightness"
+
+# Create state directory if it doesn't exist
+mkdir -p "$STATE_DIR"
+
+# Get current brightness (for initial calculation)
+get_current_brightness() {
+	# First try to read from state file
+	if [ -f "$STATE_FILE" ]; then
+		cat "$STATE_FILE"
+	else
+		# Fall back to ddcutil for initial value (optimized flags)
+		CURRENT=$(ddcutil --bus $BUS $DDCUTIL_FLAGS getvcp 10 2>/dev/null | sed -n 's/.*current value =[ ]*\([0-9]\+\).*/\1/p')
+		if [ ! -z "$CURRENT" ]; then
+			echo "$CURRENT"
+		else
+			echo "50" # Default fallback
+		fi
+	fi
+}
+
+# If this is just a Waybar display request
+if [ "$1" = "--waybar" ]; then
+	BRIGHTNESS=$(get_current_brightness)
+	MONITOR_NAME=$(get_monitor_name $BUS)
+
+	# Output JSON with empty text, but tooltip with monitor and brightness
+	echo "{\"text\": \"\", \"tooltip\": \"$MONITOR_NAME: $BRIGHTNESS%\", \"percentage\": $BRIGHTNESS, \"class\": \"brightness\"}"
+	exit 0
+fi
+
+# Rest of your existing brightness control logic for actual changes...
+CURRENT_BRIGHTNESS=$(get_current_brightness)
 
 if [ "$OPERATION" = "+" ]; then
-    NEW_BRIGHTNESS=$((CURRENT_BRIGHTNESS + VALUE))
+	NEW_BRIGHTNESS=$((CURRENT_BRIGHTNESS + VALUE))
 elif [ "$OPERATION" = "-" ]; then
-    NEW_BRIGHTNESS=$((CURRENT_BRIGHTNESS - VALUE))
+	NEW_BRIGHTNESS=$((CURRENT_BRIGHTNESS - VALUE))
 else
-    echo "Invalid operation. Use + or -"
-    exit 1
+	echo "Invalid operation. Use + or -"
+	exit 1
 fi
 
-[ $NEW_BRIGHTNESS -lt 0 ] && NEW_BRIGHTNESS=0
-[ $NEW_BRIGHTNESS -gt 100 ] && NEW_BRIGHTNESS=100
+# Clamp brightness between 0 and 100
+if [ $NEW_BRIGHTNESS -lt 0 ]; then
+	NEW_BRIGHTNESS=0
+elif [ $NEW_BRIGHTNESS -gt 100 ]; then
+	NEW_BRIGHTNESS=100
+fi
 
-# Save IMMEDIATELY
+# Save new brightness to state file IMMEDIATELY
 echo "$NEW_BRIGHTNESS" >"$STATE_FILE"
 
-# OPTIMIZATION: Skip monitor name lookup for notifications to save time
-# Use cached name or just "Monitor"
-if [ -f "$CACHE_DIR/bus_${BUS}_name" ]; then
-    MONITOR_NAME=$(cat "$CACHE_DIR/bus_${BUS}_name")
-else
-    MONITOR_NAME="Monitor"
-fi
+# Get monitor name
+MONITOR_NAME=$(get_monitor_name $BUS)
 
-# Faster bar generation
-BAR_LENGTH=7
+# Show notification immediately with calculated brightness
+BAR_LENGTH=10
 FILLED_LENGTH=$((NEW_BRIGHTNESS * BAR_LENGTH / 100))
-BAR=$(printf '█%.0s' $(seq 1 $FILLED_LENGTH))$(printf '░%.0s' $(seq 1 $((BAR_LENGTH - FILLED_LENGTH))))
 
-# Send notification FIRST (don't wait for ddcutil)
+# Create visual bar
+BAR=""
+for ((i = 0; i < $FILLED_LENGTH; i++)); do
+	BAR+="█"
+done
+for ((i = $FILLED_LENGTH; i < $BAR_LENGTH; i++)); do
+	BAR+="░"
+done
+
+# Send notification immediately
 notify-send -t 500 -h string:x-canonical-private-synchronous:brightness \
-    "🔆 $MONITOR_NAME" \
-    "<b>${BAR} ${NEW_BRIGHTNESS}%</b>" &
+	"🔆 $MONITOR_NAME Brightness" \
+	"<b>${BAR} ${NEW_BRIGHTNESS}%</b>"
 
-# CRITICAL: Use absolute value change instead of relative (+/-)
-# This is MUCH faster than relative changes
-(ddcutil --bus $BUS $DDCUTIL_FLAGS setvcp 10 $NEW_BRIGHTNESS 2>&1 | grep -v "DDC communication failed" &)
+# Apply brightness change with OPTIMIZED FLAGS (fire and forget)
+(ddcutil --bus $BUS $DDCUTIL_FLAGS setvcp 10 $OPERATION $VALUE &) 2>/dev/null
 
-# Optional background sync (disabled by default for speed)
-# Uncomment if you want state file to reflect actual hardware value
+# Optional: Sync with actual brightness in background after a delay
 (
-    sleep 3
-    ACTUAL=$(ddcutil --bus $BUS $DDCUTIL_FLAGS getvcp 10 2>/dev/null | sed -n 's/.*current value =[ ]*\([0-9]\+\).*/\1/p')
-    [ ! -z "$ACTUAL" ] && echo "$ACTUAL" >"$STATE_FILE"
+	sleep 3
+	ACTUAL_BRIGHTNESS=$(ddcutil --bus $BUS $DDCUTIL_FLAGS getvcp 10 2>/dev/null | sed -n 's/.*current value =[ ]*\([0-9]\+\).*/\1/p')
+	if [ ! -z "$ACTUAL_BRIGHTNESS" ] && [ "$ACTUAL_BRIGHTNESS" != "$NEW_BRIGHTNESS" ]; then
+		echo "$ACTUAL_BRIGHTNESS" >"$STATE_FILE"
+	fi
 ) &
