@@ -90,8 +90,8 @@ npm
 #neovim
 qbittorrent
 zen-browser-bin
-#alacritty
-ghostty
+alacritty
+#ghostty
 bat
 atuin
 zsh-abbr
