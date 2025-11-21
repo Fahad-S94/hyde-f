@@ -120,8 +120,8 @@ if pkg_installed fish && [ "${myShell}" = "fish" ]; then
             fisher install jorgebucaran/autopair.fish
             fisher install PatrickF1/fzf.fish
             fisher install jethrokuan/z
-            fisher install gazorby/fish-abbreviation-tips
             fisher install nickeb96/puffer-fish
+            fisher install IlanCosman/tide@v6
         " &>/dev/null
         
         if [ $? -eq 0 ]; then
