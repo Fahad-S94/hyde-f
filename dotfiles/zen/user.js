@@ -15,3 +15,5 @@ user_pref("zen.theme.content-element-separation", 0);
 // Zen interface customization
 user_pref("zen.view.experimental-no-window-controls", true);
 // user_pref("zen.view.use-single-toolbar", true);
+user_pref("browser.tabs.loadBookmarksInBackground", true);
+user_pref("browser.bookmarks.openInTabClosesMenu", false);
