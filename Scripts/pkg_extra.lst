@@ -3,9 +3,9 @@
 # trash-cli-git                                        # cli to manage trash files
 # libinput-gestures                                    # actions touchpad gestures using libinput
 # gestures                                             # gui for libinput-gestures
-wttrbar                                                # for weather
+#wttrbar                                                # for weather
 python-requests|wttrbar                                # script dependency
-ddcui                                                  # GUI to control brightness for external monitors
+#ddcui                                                  # GUI to control brightness for external monitors
 # hyprgui-bin                                          # GUI for hyprland configuration // might mess your userprefs but convenient // Just disappeared
 # power-profiles-daemon                                # for managing power profiles from waybar
 
@@ -19,16 +19,16 @@ wf-recorder                                          # Screen recorder for wlroo
 # wl-screenrec                                         # High performance hardware accelerated wlroots screen recorder // NO support for NVIDIA
 
 # --------------------------------------------------- // Gaming
-steam                                                  # gaming platform
-gamemode                                               # daemon and library for game optimizations
-mangohud                                               # system performance overlay
+#steam                                                  # gaming platform
+#gamemode                                               # daemon and library for game optimizations
+#mangohud                                               # system performance overlay
 # gamescope                                            # micro-compositor for gaming
 # lutris                                               # Lutris is an open source gaming platform for Linux
 
 # --------------------------------------------------- // Music
-cava                                                   # audio visualizer
-spotify                                                # proprietary music streaming service
-spicetify-cli                                          # cli to customize spotify client
+#cava                                                   # audio visualizer
+#spotify                                                # proprietary music streaming service
+#spicetify-cli                                          # cli to customize spotify client
 
 # --------------------------------------------------- // Apps
 # neovim                                               # vim based text editor
@@ -39,13 +39,13 @@ spicetify-cli                                          # cli to customize spotif
 # pokemon-colorscripts-git|zsh                           # display pokemon sprites (optional)
 # pokego-bin|zsh                                         # display pokemon sprites in terminal (written GO)
 # zsh-theme-powerlevel10k-git|zsh                        # Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience.
-bat|zsh                                                  # enhanced version of cat
-eza|zsh                                                  # file lister for zsh
-duf|zsh                                                  # prettier version of df for zsh
+#bat|zsh                                                  # enhanced version of cat
+#eza|zsh                                                  # file lister for zsh
+#duf|zsh                                                  # prettier version of df for zsh
 # --------------------------------------------------- // fish
 bat|fish                                                 # enhanced version of cat
-eza|fish                                                 # file lister
-duf|fish                                                 # prettier version of df
+#eza|fish                                                 # file lister
+#duf|fish                                                 # prettier version of df
 
 # --------------------------------------------------- // Editor
 # vscodium                                              # Full oss text editor
@@ -60,4 +60,4 @@ duf|fish                                                 # prettier version of d
 #swaylock-effects-git                                   # swaylock with effects // very minimal lockscreen
 
 # --------------------------------------------------- // OSD
-swayosd-git                                             #A GTK based on screen display for keyboard shortcuts like caps-lock and volume
+#swayosd-git                                             #A GTK based on screen display for keyboard shortcuts like caps-lock and volume
